@@ -15,18 +15,18 @@ export default function Board({
 }: Props) {
   const inPositionClassName = (position: number) => {
     if (playerOnePosition === position || playerTwoPosition === position) {
-      return "scale-125 transition-all duration-500 ease-in-out !shadow-xl !shadow-black/10";
+      return "scale-120 transition-all duration-500 ease-in-out !shadow-xl !shadow-black/10";
     }
-    return "blur-[0.05rem] opacity-80";
+    return "blur-[0.075rem] opacity-80";
   };
 
   return (
     <div className="bg-amber-50 mx-auto py-10 mt-10">
-      <div className="grid grid-cols-4 gap-y-10 justify-center">
+      <div className="max-w-2xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-5 justify-center">
         {positions.map((i) => (
-          <div key={i.position} className="flex items-center justify-center">
+          <div key={i.position} className="min-h-32 max-w-32">
             <div
-              className={`relative h-32 w-32 flex items-center justify-center rounded-2xl text-white font-bold border-2 border-black/20 shadow ${inPositionClassName(
+              className={`relative h-full w-full flex items-center justify-center rounded-2xl text-white font-bold border-2 border-black/20 shadow ${inPositionClassName(
                 i.position
               )} ${getColor(i.color)}`}
             >
