@@ -20,6 +20,9 @@ import type { AnyCard } from "./types/card";
 import useLocalStorageState from "use-local-storage-state";
 import type { SelectedAllColor } from "./types/color";
 import { shuffleArr } from "./utils/shuffleArr";
+import useSound from "use-sound";
+import winSound from "./sounds/win.mp3";
+import buttonSound from "./sounds/button.mp3";
 
 const cards = {
   [ROJO]: redCards,
@@ -31,6 +34,12 @@ const cards = {
 random.use(seedrandom.xor128(RANDOM_SEED));
 
 function App() {
+  const [playWin] = useSound(winSound, {
+    volume: 0.25,
+  });
+  const [playButton] = useSound(buttonSound, {
+    volume: 0.25,
+  });
   const [ignoreCardIds, setIgnoreCardIds] = useLocalStorageState<{
     [ROJO]: number[];
     [AMARILLO]: number[];
@@ -53,6 +62,7 @@ function App() {
   const handleNextTurn = () => {
     setTurn((prev) => (prev + 1) % teams.length);
     setSelectedColor(undefined);
+    playButton();
   };
 
   const canDisplayCard = selectedColor && selectedColor !== MORADO;
@@ -70,7 +80,6 @@ function App() {
       return;
     }
     const shuffledCards = shuffleArr(remainingCards);
-    console.log(shuffledCards);
     const randomCard = shuffledCards[random.int(0, shuffledCards.length)];
 
     setActiveCard(randomCard);
@@ -78,6 +87,7 @@ function App() {
       ...ignoreCardIds,
       [selectedColor]: [...ignoreCardIds[selectedColor], randomCard.id],
     });
+    playButton();
   };
 
   const renameTeam = () => {
@@ -121,6 +131,7 @@ function App() {
       toast.success(teams[turn].name + " avanzó hacía el color " + color, {
         duration: 5000,
       });
+      playWin();
     } else {
       toast.error(`No hay casillas de color ${color} restantes.`, {
         duration: 5000,
@@ -180,7 +191,10 @@ function App() {
             {colors.map((color) => (
               <button
                 key={color}
-                onClick={() => setSelectedColor(color as SelectedAllColor)}
+                onClick={() => {
+                  setSelectedColor(color as SelectedAllColor);
+                  playButton();
+                }}
                 className={`border-2 rounded-xl py-2 text-sm font-bold uppercase transition-all duration-200 shadow-sm
                   ${
                     selectedColor === color

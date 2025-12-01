@@ -289,6 +289,40 @@ export const redCards: RedCard[] = [
     opciones: ["17", "16", "14", "15"],
     respuesta: "17",
   },
+  {
+    id: 43,
+    tipo: "si o no",
+    pregunta: "¿Fue Nehemías el primer gobernador de los judíos repatriados?",
+    respuesta: "FALSO. Fue Zorobabel (Ag 2:21)",
+  },
+  {
+    id: 44,
+    tipo: "opciones",
+    pregunta: "¿Cuántos años vivió Matusalén?",
+    opciones: ["979", "996", "969", "986"],
+    respuesta: "969",
+  },
+  {
+    id: 45,
+    tipo: "si o no",
+    pregunta: "¿Enoc fue abuelo de Matusalén?",
+    respuesta: "FALSO. Enoc fue padre de Matusalén",
+  },
+  {
+    id: 46,
+    tipo: "opciones",
+    pregunta:
+      "¿Cuanto pesaba el candelabro de oro puro que se hizo para el tabernáculo?",
+    opciones: ["34 Kg", "36 Kg", "42 Kg", "44 Kg"],
+    respuesta: "Esto equivaldría a casi 34 Kg",
+  },
+  {
+    id: 47,
+    tipo: "responde",
+    pregunta:
+      "¿Qué familia levita transportaba el candelabro y los demás utensilios mientras viajaba por el desierto?",
+    respuesta: "La familia levita de los qohatitas (Números 4:4,9,10,15)",
+  },
 ];
 
 export const yellowCards: YellowCard[] = [

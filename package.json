@@ -17,7 +17,8 @@
     "react-hot-toast": "^2.6.0",
     "seedrandom": "^3.0.5",
     "tailwindcss": "^4.1.14",
-    "use-local-storage-state": "^19.5.0"
+    "use-local-storage-state": "^19.5.0",
+    "use-sound": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
